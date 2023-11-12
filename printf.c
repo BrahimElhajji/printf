@@ -23,7 +23,7 @@ int _printf(const char *format, ...)
 			i++;
 		}
 
-		if (format[i] == '%' && format[i] != '\0')
+		if (format[i] == '%' && format[i + 1] != '\0')
 		{
 			switch (format[i + 1])
 			{
@@ -39,7 +39,7 @@ int _printf(const char *format, ...)
 					break;
 
 				case '%':
-					write(1, "%%", 1);
+					write(1, &format[i], 1);
 					break;
 
 			}
