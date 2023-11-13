@@ -23,19 +23,14 @@ int print_n(int num)
 	}
 
 	buff = (char *)malloc((len + 1) * sizeof(char));
-	if (buff == 0)
+	if (buff == NULL)
 		return (0);
 
 	while (num != 0)
 	{
 		n = num % 10;
-		if (n < 0)
-			n = -n;
-		if (n < 0)
-			buff[in] = '0' - n;
-		else
-			buff[in] = '0' + n;
-		in = in + 1;
+		n = (n < 0) ? -n : n;
+		buff[in++] = '0' + n;
 		num = num / 10;
 	}
 	if (minus)
