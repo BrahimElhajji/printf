@@ -46,4 +46,5 @@ int print_n(int num)
 		write(1, &buff[i], 1);
 	}
 	free(buff);
+	return (0);
 }
