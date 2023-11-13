@@ -24,5 +24,5 @@ print_s (char *s)
 		}
 
 	}
-	return (1);
+	return (0);
 }
