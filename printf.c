@@ -9,14 +9,15 @@
  */
 int _printf(const char *format, ...)
 {
-	int i = 0;
+	int i = 0, count = 0;
 	va_list arg;
-	int count = 0;
 	char ch;
 	char *z;
 
+	if (format == NULL)
+		return (-1);
 	va_start(arg, format);
-	while (format && format[i])
+	while (format[i])
 	{
 		if (format[i] != '%')
 		{
@@ -48,6 +49,11 @@ int _printf(const char *format, ...)
 					count++;
 					break;
 			}
+		}
+		else
+		{
+			write(1, format, 1);
+			count++;
 		}
 		i++;
 	}
