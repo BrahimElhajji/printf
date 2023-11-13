@@ -6,15 +6,15 @@
  * @s: string parametre
  *
  * Return: Success
- */ 
+ */
 
-int print_s (char *s) 
+int print_s(char *s)
 {
 	int counter = 0;
 
 	if (s == 0)
 	{
-		write (1, "(null)", 6);
+		write(1, "(null)", 6);
 		return (6);
 	}
 	while (*s)
