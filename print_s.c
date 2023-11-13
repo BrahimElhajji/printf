@@ -24,6 +24,5 @@ int print_s (char *s)
 		counter++;
 	}
 
-}
 return (counter);
 }
