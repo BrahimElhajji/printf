@@ -1,11 +1,11 @@
 #include "main.h"
-
 /**
  * _printf - function that produces output according to a format
+ *
  * @format: is a character string
+ *
  * Return: Always 0
  */
-
 int _printf(const char *format, ...)
 {
 	int i = 0;
@@ -14,6 +14,8 @@ int _printf(const char *format, ...)
 	char *z;
 
 	va_start(arg, format);
+	if (format == NULL || (format[0] == '%' && format[1] == '\0'))
+		return (-1);
 	while (format[i])
 	{
 		if (format[i] != '%')
@@ -27,22 +29,23 @@ int _printf(const char *format, ...)
 			{
 				case 'c':
 					ch = va_arg(arg, int);
-					write(1, &ch, 1);
+					print_c(ch);
 					break;
 				case 's':
 					z = va_arg(arg, char *);
-					write(1, z, strlen(z));
+					print_s(z);
 					break;
+
 				case '%':
 					write(1, "%", 1);
 					break;
 				default:
-					write(1, &format[i], 1);
-					break;
+					i++;
+					continue;
 			}
 			i += 2;
 		}
 	}
 	va_end(arg);
-	return (0);
+	return (i);
 }
