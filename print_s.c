@@ -8,21 +8,22 @@
  * Return: Success
  */ 
 
-	int
-print_s (char *s) 
+int print_s (char *s) 
 {
+	int counter = 0;
+
 	if (s == 0)
 	{
-		write (1, "(nil)", 5);
+		write (1, "(null)", 6);
+		return (6);
 	}
-	else
+	while (*s)
 	{
-		while (*s != '\0')
-		{
-			write(1, s, 1);
-			s++;
-		}
-
+		write(1, s, 1);
+		s++;
+		counter++;
 	}
-	return (0);
+
+}
+return (counter);
 }
