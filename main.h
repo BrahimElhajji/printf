@@ -8,5 +8,5 @@
 int _printf(const char *format, ...);
 int print_c(char c);
 int print_s(char *s);
-int print_n(char *str, int num);
+int print_n(int num);
 #endif

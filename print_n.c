@@ -3,37 +3,44 @@
 /**
  * print_n - turning num to str
  *
- * @str: str parametre
  * @num: integer parametre
  *
  * Return: Success
  */
-
-int print_n(char *str, int num)
+int print_n(int num)
 {
-	int i, mod, n;
-	int length = 0, check = 0;
+	unsigned int i = 1, digit, divis = 1, temp, digit_c = 1;
+	int counter = 0;
+	char con;
 
 	if (num < 0)
 	{
-		check = 1;
-		num = -num;
-		str[0] = '-';
-		length++;
+		write(1, "-", 1);
+		num = num * -1;
+		counter++;
 	}
-	n = num;
-	while (n != 0)
+	if (num == 0)
 	{
-		length++;
-		n /= 10;
+		write(1, "0", 1);
+		return (1);
 	}
-	for (i = length - 1; i >= check; i--)
+
+	digit = num;
+	while (digit > 9)
 	{
-		mod = num % 10;
-		num = num / 10;
-		str[i] = mod + '0';
+		digit = digit / 10;
+		divis = divis * 10;
+		i++;
 	}
-	str[length] = '\0';
-	write(1, str, length);
-	return (num);
+	while (digit_c <= i)
+	{
+		temp = num / divis;
+		num = num % divis;
+		divis = divis / 10;
+		con = temp + '0';
+		write(1, &con, 1);
+		counter++;
+		digit_c++;
+	}
+	return (counter);
 }
