@@ -10,7 +10,6 @@
 int _printf(const char *format, ...)
 {
 	va_list arg;
-	int num;
 	int counter = 0;
 	char chr;
 	char *s;
@@ -35,10 +34,6 @@ int _printf(const char *format, ...)
 				s = (va_arg(arg, char *));
 				counter += print_s(s);
 
-			} else if (*format == 'd' || 'i')
-			{
-				num = (va_arg(arg, int));
-				counter += print_n(num);
 			} else
 			{
 				counter += print_c('%');
