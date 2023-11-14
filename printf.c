@@ -35,7 +35,7 @@ int _printf(const char *format, ...)
 				s = (va_arg(arg, char *));
 				counter += print_s(s);
 
-			} else if (*format == 'd' || 'i')
+			} else if (*format == 'd' || *format == 'i')
 			{
 				num = (va_arg(arg, int));
 				counter += print_n(num);
