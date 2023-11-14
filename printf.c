@@ -11,8 +11,7 @@ int _printf(const char *format, ...)
 {
 	va_list arg;
 	int num, counter = 0;
-	char chr;
-	char *s;
+	char *s, chr;
 
 	va_start(arg, format);
 	if (format == NULL || (format[0] == '%' && format[1] == '\0'))
@@ -44,7 +43,8 @@ int _printf(const char *format, ...)
 			}
 		} else
 		{
-			counter += print_c(*format); }
+			counter += print_c(*format);
+		}
 		format++;
 	}
 	va_end(arg);
