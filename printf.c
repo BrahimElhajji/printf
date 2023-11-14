@@ -37,13 +37,11 @@ int _printf(const char *format, ...)
 			{
 				counter += print_c('%');
 				counter += print_c(*format);
-			}
-			else if (*format == 'd' || 'i')
+			} else if (*format == 'd' || *format == 'i')
 			{
 				num = (va_arg(arg, int));
 				counter += print_n(num);
-			} 
-
+			}
 		} else
 		{
 			counter += print_c(*format); }
