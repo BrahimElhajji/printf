@@ -1,16 +1,17 @@
 #include "main.h"
 
 /**
- * _printf - function that produces output according to a format
+ * _printf - Outputs according to a format
  *
- * @format: is a character string
+ * @format: character string
  *
- * Return: Success
+ * Return: Number of characters printed
  */
 int _printf(const char *format, ...)
 {
 	va_list arg;
-	int num, counter = 0;
+	int num;
+	int counter = 0;
 	char *s, chr;
 
 	va_start(arg, format);
@@ -32,21 +33,20 @@ int _printf(const char *format, ...)
 			{
 				s = (va_arg(arg, char *));
 				counter += print_s(s);
-			} else if (*format == '%')
-			{
-				counter += print_c('%');
-				counter += print_c(*format);
-			} else if (*format == 'd' || *format == 'i')
+
+			} else if (*format == 'd' || 'i')
 			{
 				num = (va_arg(arg, int));
 				counter += print_n(num);
+			} else
+			{
+				counter += print_c('%');
+				counter += print_c(*format);
 			}
 		} else
 		{
-			counter += print_c(*format);
-		}
+			counter += print_c(*format); }
 		format++;
 	}
 	va_end(arg);
-	return (counter);
-}
+	return (counter); }
