@@ -11,7 +11,6 @@ int _printf(const char *format, ...)
 {
 	va_list arg;
 	int num, counter = 0;
-	char chr;
 	char *s;
 
 	va_start(arg, format);
@@ -33,18 +32,14 @@ int _printf(const char *format, ...)
 			{
 				s = (va_arg(arg, char *));
 				counter += print_s(s);
-			} else if (*format == '%')
+			} else
 			{
 				counter += print_c('%');
 				counter += print_c(*format);
-			} else if (*format == 'd' || *format == 'i')
-			{
-				num = (va_arg(arg, int));
-				counter += print_n(num);
-			}
 		} else
 		{
-			counter += print_c(*format); }
+			counter += print_c(*format);
+		}
 		format++;
 	}
 	va_end(arg);
